@@ -33,7 +33,7 @@
 </div>
 
 <div *ngIf="!showTasks">
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="editTask">
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="!editTask">
         <form [formGroup]="taskForm" *ngIf="taskForm">
             <!-- Email input -->
             <div class="form-outline mb-4">
@@ -93,7 +93,7 @@
 
         </form>
     </div>
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="!editTask">
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="editTask">
         <form [formGroup]="taskForm" *ngIf="taskForm">
             <!-- Email input -->
             <div class="form-outline mb-4">
@@ -146,7 +146,7 @@
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button type="button" class="btn btn-primary btn-lg"
                         style="padding-left: 2.5rem; padding-right: 2.5rem;"
-                        (click)="showTasks = !showTasks; editTask= !editTask">Cancel</button>
+                        (click)="showTasks = !showTasks">Cancel</button>
                 </div>
             </div>
             

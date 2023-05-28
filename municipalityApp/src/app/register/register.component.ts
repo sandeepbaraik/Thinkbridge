@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       email: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required]),
       phone: new FormControl("", [Validators.required]),
-      userType: new FormControl(null),
+      userType: new FormControl(null, [Validators.required]),
     });
   }
 

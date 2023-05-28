@@ -55,7 +55,7 @@ export class TaskComponent implements OnInit {
       taskName: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
       location: new FormControl("", [Validators.required]),
-      priority: new FormControl(null),
+      priority: new FormControl(null, [Validators.required]),
       assignedTo: new FormControl(null),
     });
   }
@@ -70,7 +70,15 @@ export class TaskComponent implements OnInit {
   }
 
   newTask() {
-    this.showTasks = false
+    this.showTasks = false;
+    this.editTask = false;
+    this.taskForm?.patchValue({
+      taskName: '',
+      description: '',
+      location: '',
+      priority: null,
+      assignedTo: null
+    })
   }
 
   addTask(formVal:any) {
@@ -92,6 +100,7 @@ export class TaskComponent implements OnInit {
   }
 
   editTaskClicked(value: any) {
+    this.editTask = true;
     this.editTaskId = value.id;
     this.taskForm?.patchValue({
       taskName: value.taskName,
