@@ -24,6 +24,7 @@
             <td>{{item.description}}</td>
             <td>{{item.clerk}}</td>
             <td>{{item.status}}</td>
+            <td><Button (click)="showTasks = !showTasks; editTaskClicked(item)">Edit</Button></td>
             <!-- <td><button class="btn btn btn-success pointer">Assign Work</button></td> -->
           </tr>
         </tbody>
@@ -32,7 +33,7 @@
 </div>
 
 <div *ngIf="!showTasks">
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="editTask">
         <form [formGroup]="taskForm" *ngIf="taskForm">
             <!-- Email input -->
             <div class="form-outline mb-4">
@@ -75,10 +76,6 @@
                   </select>
                 
             </div>
-
-            <!-- <div *ngIf="errorMsg" class="mb-3">
-              <span class="text text-danger">{{errorMsg}}</span>
-            </div> -->
             <div style="display: flex; justify-content: space-between;">
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button type="button" class="btn btn-primary btn-lg"
@@ -86,9 +83,75 @@
                         [disabled]="taskForm?.invalid"
                         (click)="addTask(taskForm.value)">Add</button>
                 </div>
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                        (click)="showTasks = !showTasks">Cancel</button>
+                </div>
             </div>
             
 
         </form>
     </div>
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" *ngIf="!editTask">
+        <form [formGroup]="taskForm" *ngIf="taskForm">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Task Name</label>
+                <input type="name" id="form3Example3" class="form-control form-control-lg"
+                    formControlName="taskName"  placeholder="Enter Task name" />
+                
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Description</label>
+                <input type="name" id="form3Example3" class="form-control form-control-lg"
+                    formControlName="description"  placeholder="Enter Task name" />
+                
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Location</label>
+                <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    formControlName="location"  placeholder="Enter a location" />
+                
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Priority</label>
+                <select class="form-select" aria-label="Default select example"
+                formControlName="priority">
+                    <option [ngValue]="null" disabled>Select</option>
+                    <option *ngFor="let item of priorities"
+                      [ngValue]="item">{{item}}</option>
+                  </select>
+                
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Assigned To</label>
+                <select class="form-select" aria-label="Default select example"
+                formControlName="assignedTo">
+                    <option [ngValue]="null" disabled>Select</option>
+                    <option *ngFor="let item of clerks"
+                      [ngValue]="item.id">{{item.name}}</option>
+                  </select>
+                
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                        [disabled]="taskForm?.invalid"
+                        (click)="editTaskDetails(taskForm.value)">Update</button>
+                </div>
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                        (click)="showTasks = !showTasks; editTask= !editTask">Cancel</button>
+                </div>
+            </div>
+            
+
+        </form>
+    </div>
+
 </div>

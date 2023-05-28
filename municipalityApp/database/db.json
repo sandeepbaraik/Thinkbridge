@@ -67,14 +67,14 @@
       "location": "Ranchi",
       "priority": "Medium",
       "assignedTo": 2,
-      "status": "Ongoing",
+      "status": "Completed",
       "id": 3,
       "edit": true
     },
     {
-      "taskName": "Drainage Construction",
-      "description": "Drainage construction in all areas of khelgaon",
-      "location": "Khelgoan",
+      "taskName": "Drainage Construction1",
+      "description": "Drainage construction in all areas of khelgaon1",
+      "location": "Khelgoan1",
       "priority": "High",
       "assignedTo": 5,
       "status": "Assigned",

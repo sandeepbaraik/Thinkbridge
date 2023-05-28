@@ -17,6 +17,9 @@ export class TaskComponent implements OnInit {
   priorities = ['Low', 'Medium', 'High']
   filteredTasks: any;
   p: number = 1;
+  editTask:boolean = false;
+  editatbleTask: any
+  editTaskId: any;
 
   constructor(
     private userService: UserService,
@@ -76,6 +79,26 @@ export class TaskComponent implements OnInit {
       if(res) {
         this.getTasks();
       }
+    })
+  }
+
+  editTaskDetails(task: any) {
+    this.userService.editTasks(task, this.editTaskId).subscribe(res => {
+      if(res) {
+        this.getTasks();
+      }
+    })
+    
+  }
+
+  editTaskClicked(value: any) {
+    this.editTaskId = value.id;
+    this.taskForm?.patchValue({
+      taskName: value.taskName,
+      description: value.description,
+      location: value.location,
+      priority: value.priority,
+      assignedTo: value.assignedTo
     })
   }
 
