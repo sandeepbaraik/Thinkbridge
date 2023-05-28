@@ -3,7 +3,7 @@
 Steps run the application
 
 1. Clone the project
-2. Navigate to MunicipalityApp folder
+2. Navigate to municipalityApp folder
 3. Install node modules using the command - npm install
 4. To run:
    i. ng serve
