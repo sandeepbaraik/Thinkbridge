@@ -1,0 +1,12 @@
+.nav-item {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #0d6efd;
+    border-radius: 5px;
+}
+
+.inactive{
+    background: none;
+}

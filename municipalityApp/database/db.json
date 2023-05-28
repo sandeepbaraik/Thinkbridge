@@ -1,0 +1,84 @@
+{
+  "users": [
+    {
+      "name": "Sandeep Kumar",
+      "email": "admin@gmail.com",
+      "password": "123456789",
+      "phone": "9006792115",
+      "userType": "Admin",
+      "id": 1
+    },
+    {
+      "name": "Clerk 1",
+      "email": "clerk1@gmail.com",
+      "password": "123456789",
+      "phone": "911111119191",
+      "userType": "Clerk",
+      "id": 2
+    },
+    {
+      "name": "Clerk 2",
+      "email": "clerk2@gmail.com",
+      "password": "123456789",
+      "phone": "92221119191",
+      "userType": "Clerk",
+      "id": 3
+    },
+    {
+      "name": "Clerk 3",
+      "email": "clerk3@gmail.com",
+      "password": "123456789",
+      "phone": "913331919132",
+      "userType": "Clerk",
+      "id": 4
+    },
+    {
+      "name": "Clerk 5",
+      "email": "clerk5@gmail.com",
+      "password": "123456789",
+      "phone": "1919191919191",
+      "userType": "Clerk",
+      "id": 5
+    }
+  ],
+  "workDetails": [
+    {
+      "taskName": "pothole",
+      "description": "Pothole in main road",
+      "location": "kanta toli",
+      "priority": "Medium",
+      "assignedTo": 2,
+      "status": "Completed",
+      "id": 1,
+      "edit": true
+    },
+    {
+      "taskName": "Drainage blockage",
+      "description": "Fix drainage blockage in mg road",
+      "location": "MG Road",
+      "priority": "High",
+      "assignedTo": 4,
+      "status": "Assigned",
+      "id": 2
+    },
+    {
+      "taskName": "Road Construction",
+      "description": "Construct Road from bus stand to railway station",
+      "location": "Ranchi",
+      "priority": "Medium",
+      "assignedTo": 2,
+      "status": "Ongoing",
+      "id": 3,
+      "edit": true
+    },
+    {
+      "taskName": "Drainage Construction",
+      "description": "Drainage construction in all areas of khelgaon",
+      "location": "Khelgoan",
+      "priority": "High",
+      "assignedTo": 5,
+      "status": "Assigned",
+      "id": 4
+    }
+  ]
+}

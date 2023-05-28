@@ -1,0 +1,58 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row">
+            <div>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light col-md-12">
+                    <img src="assets/logo.png" alt="">
+                    <h2 style="margin-top: 10px;">{{userType}}</h2>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <!-- <li class="nav-item active">
+                                <a class="nav-link">Tasks <span
+                                        class="sr-only">(current)</span></a>
+                            </li> -->
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0" style="float: right;">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" #searchText aria-label="Search" (keyup)="search(searchText.value)">
+                            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(searchText.value)">Search</button> -->
+                        </form>
+                        <button class="btn btn-primary" style="margin-left: 5px;" (click)="logout()">Logout</button>
+                    </div>
+
+                </nav>
+            </div>
+            <div>
+                <table class="table" *ngIf="filteredTasks">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of filteredTasks | paginate: { itemsPerPage: 10, currentPage: p, totalItems: tasks.length }">
+                            <td>{{item.id}}</td>
+                            <td>{{item.taskName}}</td>
+                            <td>{{item.location}}</td>
+                            <td>{{item.description}}</td>
+                            <td *ngIf="!item.edit">{{item.status}}</td>
+                            <td *ngIf="item.edit"><select class="form-select" 
+                                    [(ngModel)]="item.status">
+                                    <option *ngFor="let item of taskStatus" [ngValue]="item">{{item}}</option>
+                                </select></td>
+                            <td *ngIf="!item.edit"><button (click)="item.edit = true">Edit</button></td>
+                            <td *ngIf="item.edit"><button (click)="editTask(item)">Save</button></td>
+                            
+                            <!-- <td><button class="btn btn btn-success pointer">Assign Work</button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls style="float:right" (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+</section>

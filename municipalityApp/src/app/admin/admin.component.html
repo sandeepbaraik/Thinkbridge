@@ -1,0 +1,40 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row">
+            <div>
+                <app-nav (tabTypeChange)="tabChange($event)" (searchText)="search($event)"></app-nav>
+            </div>
+            <div *ngIf="tabType == 'tasks'">
+              <app-task></app-task>
+            </div>
+            <div *ngIf="tabType == 'clerks'">
+                <table class="table" *ngIf="clerks">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No</th>
+                        <!-- <th scope="col">Type</th> -->
+                        <th scope="col">Task List</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of clerks | paginate: { itemsPerPage: 10, currentPage: p, totalItems: users.length }">
+                        <td >{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone}}</td>
+                        <!-- <td>{{item.userType}}</td> -->
+                        <td><button class="btn btn btn-success pointer" (click)="showAssignedTasks(item.id)">Show Tasks</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <pagination-controls style="float:right" (pageChange)="p = $event"></pagination-controls>
+            </div>
+            
+        </div>
+
+    </div>
+</section>
+
